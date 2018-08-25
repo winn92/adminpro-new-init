@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-6" *ngFor="let grafico of graficosArray">
+        <div class="card">
+            <div class="card-body">
+                <app-grafico-dona [leyenda]="grafico.leyenda" [labels]="grafico.labels" [data]="grafico.data" [type]="grafico.type"></app-grafico-dona>
+            </div>
+        </div>
+    </div>
+</div>
