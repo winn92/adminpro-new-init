@@ -95,4 +95,16 @@ export class UsuarioService {
       return resp.usuario;
     });
   }
+
+  actualizarUsuario(usuario: Usuario) {
+    const url = URL_SERVICIOS + '/usuarios/' + usuario._id + '?token=' + this.token;
+    console.log(url);
+    return this.http.put(url, usuario)
+      .map((resp: any) => {
+        const usuarioDB: Usuario = resp.usuario;
+        this.guardarStorage(usuarioDB._id, this.token, usuarioDB);
+        swal('Usuario actualizado', usuario.nombre, 'success');
+        return true;
+      });
+  }
 }
